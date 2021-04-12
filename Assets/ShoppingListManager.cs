@@ -10,6 +10,9 @@ public class ShoppingListManager : MonoBehaviour
 
     public GameObject textfieldParent;
 
+    public GameObject shoppingListPrefab;
+
+    public GameObject canvas;
 
     //public List<RectTransform> items;
 
@@ -36,8 +39,6 @@ public class ShoppingListManager : MonoBehaviour
 
     public void Test(string input)
     {
-        Debug.Log(input);
-
         GameObject newTextField = Instantiate(textField, Vector3.zero, Quaternion.identity,textfieldParent.transform);
 
         Text newTextFieldText = newTextField.GetComponent<Text>();
@@ -46,29 +47,20 @@ public class ShoppingListManager : MonoBehaviour
         RectTransform rect = newTextField.GetComponent<RectTransform>();
         rect.anchoredPosition = new Vector2(0, textOffset);
         textOffset -= 20;
-        
-        
 
-
-        //items.Add(rect);
-
-        //UpdateItems();
     }
 
-    //public void RemoveItem(RectTransform item)
-    //{
-    //    items.Remove(item);
-    //    UpdateItems();
-    //    Destroy(item.gameObject);
-    //}
-    //
-    //public void UpdateItems()
-    //{
-    //    textOffset = 0;
-    //    for (int i = 0; i < items.Count; i++)
-    //    {
-    //        items[i].anchoredPosition = new Vector2(0, textOffset);
-    //        textOffset -= 20;
-    //    }
-    //}
+    public void CreateList(string input)
+    {
+        GameObject newPanel = Instantiate(shoppingListPrefab, Vector3.zero, Quaternion.identity, canvas.transform);
+
+        ShoppingList newList = newPanel.GetComponent<ShoppingList>();
+        newList.Name = input;
+
+        newList.textName.text = input;
+        RectTransform rect = newPanel.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(0, textOffset);
+        textOffset -= 20;
+
+    }
 }
