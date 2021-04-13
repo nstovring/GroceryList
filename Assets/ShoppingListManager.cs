@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class ShoppingListManager : MonoBehaviour
 {
+
+    public GameObject panel;
+    public GameObject canvas;
+
     public GameObject textField;
 
     public GameObject textfieldParent;
@@ -34,11 +38,11 @@ public class ShoppingListManager : MonoBehaviour
     }
 
 
-    public void Test(string input)
+    public void LavNyVare(string input)
     {
         Debug.Log(input);
 
-        GameObject newTextField = Instantiate(textField, Vector3.zero, Quaternion.identity,textfieldParent.transform);
+        GameObject newTextField = Instantiate(textField, Vector3.zero, Quaternion.identity, textfieldParent.transform);
 
         Text newTextFieldText = newTextField.GetComponent<Text>();
         newTextFieldText.text = input;
@@ -46,13 +50,20 @@ public class ShoppingListManager : MonoBehaviour
         RectTransform rect = newTextField.GetComponent<RectTransform>();
         rect.anchoredPosition = new Vector2(0, textOffset);
         textOffset -= 20;
-        
-        
+    }
 
+    public void LavNyListe(string navn)
+    {
 
-        //items.Add(rect);
+        GameObject newTextField = Instantiate(panel, Vector3.zero, Quaternion.identity, canvas.transform);
 
-        //UpdateItems();
+        ShoppingList newTextFieldText = newTextField.GetComponent<ShoppingList>();
+        newTextFieldText.Name.text = navn;
+
+        RectTransform rect = newTextField.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(0, textOffset);
+        textOffset -= 20;
+
     }
 
     //public void RemoveItem(RectTransform item)
