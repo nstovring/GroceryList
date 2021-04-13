@@ -5,22 +5,27 @@ using UnityEngine.UI;
 
 public class ShoppingList : MonoBehaviour
 {
-    public string Name;
-    public List<string> items;
-
     public Text textName;
-    public GameObject textInput;
-    public GameObject textFieldPrefab;
-    public GameObject textfieldParent;
+
+    public GameObject textField;
+
+    public GameObject vareFelt;
 
     // Start is called before the first frame update
-    public void AddToList(string input)
-    {
-        GameObject newTextField = Instantiate(textFieldPrefab, Vector3.zero, Quaternion.identity, transform);
+   public void LavNyVare(string input)
+   {
+       GameObject newTextField = Instantiate(textField, Vector3.zero, Quaternion.identity, transform);
+  
+       Text newTextFieldText = newTextField.GetComponent<Text>();
+       newTextFieldText.text = input;
+  
+       RectTransform rect = newTextField.GetComponent<RectTransform>();
+       rect.anchoredPosition = new Vector2(0, 0);
 
-        Text newTextFieldText = newTextField.GetComponent<Text>();
-        newTextFieldText.text = input;
 
-        items.Add(input);
-    }
+       vareFelt.transform.SetAsLastSibling();
+  
+   }
+
+
 }

@@ -37,7 +37,7 @@ public class ShoppingListManager : MonoBehaviour
     }
 
 
-    public void Test(string input)
+    public void LavNyVare(string input)
     {
         GameObject newTextField = Instantiate(textField, Vector3.zero, Quaternion.identity,textfieldParent.transform);
 
@@ -55,7 +55,7 @@ public class ShoppingListManager : MonoBehaviour
         GameObject newPanel = Instantiate(shoppingListPrefab, Vector3.zero, Quaternion.identity, canvas.transform);
 
         ShoppingList newList = newPanel.GetComponent<ShoppingList>();
-        newList.Name = input;
+        //newList.Name = input;
 
         newList.textName.text = input;
         RectTransform rect = newPanel.GetComponent<RectTransform>();
